@@ -23,6 +23,8 @@ const ItemList = ({ itemCategory }) => {
   const id = useField('text')
   const name = useField('text')
   const color = useField('text')
+  const minPrice = useField('number')
+  const maxPrice = useField('number')
   const [maker, setMaker] = useState(null)
 
 
@@ -43,12 +45,12 @@ const ItemList = ({ itemCategory }) => {
       i.id.toLowerCase().includes(id.value) &&
       i.name.toLowerCase().includes(name.value) &&
       (i.color.includes(color.value) || color.value === '') &&
-      (!maker || i.manufacturer.toLowerCase() === maker)
+      (!maker || i.manufacturer.toLowerCase() === maker) &&
+      (minPrice.value === '' || Number(i.price) >= Number(minPrice.value)) &&
+      (maxPrice.value === '' || Number(i.price) <= Number(maxPrice.value))
     )
-
     return result
   })
-  console.log(maker)
   const padding = {
     padding: 5
   }
@@ -59,6 +61,8 @@ const ItemList = ({ itemCategory }) => {
         <Input style={padding} label='id' {...id} />
         <Input style={padding} label='name' {...name} />
         <Input style={padding} label='color' {...color} />
+        <Input style={padding} label='minPrice' {...minPrice} />
+        <Input style={padding} label='maxPrice' {...maxPrice} />
         <Select
           options={ [...options, { value: null, text: 'any' }]}
           placeholder='Select a manufacturer...'
