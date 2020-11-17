@@ -1,26 +1,19 @@
 import React, { useEffect, useState } from 'react'
-//import warehouseService from './services/warehouse'
-import JacketList from './components/JacketList'
 
 import { Switch, Route, Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchItems } from './reducers/itemReducer'
 import { fetchAvailability } from './reducers/manufacturerReducer'
-import ShirtList from './components/ShirtList'
-import AccessoryList from './components/AccessoryList'
-
-
-
+import ItemList from './components/ItemList'
 
 const App = () => {
   const [loadItems, setLoadItems] = useState(true)
   const [loadAvailability, setLoadAvailability] = useState(true)
-  //const [manufacturers, setManufacturers] = useState({})
+
   const dispatch = useDispatch()
 
   useEffect(() => {
     if(loadItems){
-      console.log('load items')
       dispatch(fetchItems('jackets'))
       dispatch(fetchItems('shirts'))
       dispatch(fetchItems('accessories'))
@@ -30,12 +23,8 @@ const App = () => {
 
   const items = useSelector(state => state.items)
 
-  //const manufacturers = useSelector(state => state.manufacturers)
-
-
   useEffect(() => {
     if(loadAvailability && items.manufacturers) {
-      console.log('hit')
       const m = items.manufacturers
       m.forEach(manufacturer => dispatch(fetchAvailability(manufacturer)))
       setLoadAvailability(false)
@@ -45,19 +34,10 @@ const App = () => {
 
   useEffect(() => {
     setInterval(() => {
-      console.log('update all')
       setLoadItems(true)
       setLoadAvailability(true)
-
     }, 5*60*1000)
-
   }, [])
-
-
-
-
-
-
 
   const padding = {
     padding: 5
@@ -75,13 +55,13 @@ const App = () => {
 
       <Switch>
         <Route path='/jackets'>
-          <JacketList />
+          <ItemList itemCategory='jackets'/>
         </Route>
         <Route path='/shirts'>
-          <ShirtList />
+          <ItemList itemCategory='shirts'/>
         </Route>
         <Route path='/accessories'>
-          <AccessoryList />
+          <ItemList itemCategory='accessories'/>
         </Route>
       </Switch>
     </div>
