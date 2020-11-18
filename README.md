@@ -1,7 +1,7 @@
 # Assignment for junior developer application (Reaktor 2020)
 
 ### Table of Contents
-- [Heroku link]()
+- [Heroku link](https://github.com/ematan/warehouse-front#link-to-running-version-in-heroku)
 - [Implemented features](https://github.com/ematan/warehouse-front#implementation)
 - [Initial Instructions](https://github.com/ematan/warehouse-front#instructions)
 
@@ -9,8 +9,14 @@ Link to running version in heroku
 --------------------------------
 coming soon
 
-Implemented additional features
+Implemented features
 --------------
+
+- fetch each item category from api
+- fetch availability by manufacturer from api
+- handle empty response by refetching
+- save fetched data to store, refetch every 5 minutes
+
 - filtering by each field
 
 
