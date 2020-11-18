@@ -1,5 +1,19 @@
 # Assignment for junior developer application (Reaktor 2020)
 
+# Table of Contents
+[Heroku link]()
+[Implemented features](https://github.com/ematan/warehouse-front#implementation)
+[Initial Instructions](https://github.com/ematan/warehouse-front#instructions)
+
+Link to running version in heroku
+--------------------------------
+coming soon
+
+Implemented additional features
+--------------
+- filtering by each field
+
+
 Instructions
 ------------
 Your client is a clothing brand that is looking for a simple web app to use in their warehouses. To do their work efficiently, the warehouse workers need a fast and simple listing page per product category, where they can check simple product and availability information from a single UI.

@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { fetchItems } from './reducers/itemReducer'
 import { fetchAvailability } from './reducers/manufacturerReducer'
 import ItemList from './components/ItemList'
+import { Button, Divider, Header, Container } from 'semantic-ui-react'
 
 const App = () => {
   const [loadItems, setLoadItems] = useState(true)
@@ -32,6 +33,7 @@ const App = () => {
 
   },[dispatch, items.manufacturers, loadAvailability])
 
+
   useEffect(() => {
     setInterval(() => {
       setLoadItems(true)
@@ -39,18 +41,19 @@ const App = () => {
     }, 5*60*1000)
   }, [])
 
-  const padding = {
-    padding: 5
-  }
-
   return (
     <div>
       <h1>Warehouse</h1>
-      <div>
-        <Link style={padding} to="/jackets">jackets</Link>
-        <Link style={padding} to="/shirts">shirts</Link>
-        <Link style={padding} to="/accessories">accessories</Link>
-      </div>
+      <Divider horizontal>
+        <Header as='h4'>
+          Product categories
+        </Header>
+      </Divider>
+      <Container textAlign='center'>
+        <Link to="/jackets"><Button size='huge'>jackets</Button></Link>
+        <Link to="/shirts"><Button  size='huge'>shirts</Button></Link>
+        <Link to="/accessories"><Button size='huge'>accessories</Button></Link>
+      </Container>
 
 
       <Switch>

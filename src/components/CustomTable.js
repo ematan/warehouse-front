@@ -1,11 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Table } from 'semantic-ui-react'
-import generateRows from '../helpers/tableHelper'
+import { Table, Loader } from 'semantic-ui-react'
 
-const MyTable = ({ items, manufacturers }) => {
 
-  const rows = generateRows(items, manufacturers)
+const MyTable = ({ items }) => {
+
+  const generateRows = (items) => items.map(
+    i => {
+      return i.availability
+        ? <MyRow key={i.id} item={i} availability={i.availability} />
+        : <MyRow key={i.id} item={i} availability={'loading'} />
+    })
+
+  const rows = generateRows(items)
 
   return(
     <Table celled>
@@ -43,7 +50,7 @@ const MyRow = ({ item, availability }) => {
       <Table.Cell>{item.color}</Table.Cell>
       <Table.Cell>{item.manufacturer}</Table.Cell>
       <Table.Cell>{item.price}</Table.Cell>
-      <Table.Cell>{availability? availability : 'Loading...' }</Table.Cell>
+      <Table.Cell>{availability!=='loading'? availability : <Loader active inline='centered' size='mini'></Loader> }</Table.Cell>
     </Table.Row>
   )
 }
