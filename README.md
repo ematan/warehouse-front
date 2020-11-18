@@ -1,9 +1,9 @@
 # Assignment for junior developer application (Reaktor 2020)
 
-# Table of Contents
-[Heroku link]()
-[Implemented features](https://github.com/ematan/warehouse-front#implementation)
-[Initial Instructions](https://github.com/ematan/warehouse-front#instructions)
+### Table of Contents
+- [Heroku link]()
+- [Implemented features](https://github.com/ematan/warehouse-front#implementation)
+- [Initial Instructions](https://github.com/ematan/warehouse-front#instructions)
 
 Link to running version in heroku
 --------------------------------
