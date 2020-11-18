@@ -3,12 +3,13 @@
 ### Table of Contents
 - [Heroku link](https://github.com/ematan/warehouse-front#link-to-running-version-in-heroku)
 - [Implemented features](https://github.com/ematan/warehouse-front#implemented-features)
-- [Implemented features](https://github.com/ematan/warehouse-front#personal-comments)
-- [Initial Instructions](https://github.com/ematan/warehouse-front#instructions)
+- [Personal Comments](https://github.com/ematan/warehouse-front#personal-comments)
+- [Instructions](https://github.com/ematan/warehouse-front#instructions)
 
 Link to running version in heroku
 --------------------------------
 https://thawing-plateau-33439.herokuapp.com/
+Note: pushed to heroku with devDependences, so Redux DevTools should function with the app now! :)
 
 Implemented features
 --------------
@@ -17,7 +18,6 @@ Implemented features
 - fetch availability by manufacturer from api
 - handle empty response by refetching
 - save fetched data to store, refetch every 5 minutes
-
 - filtering for each field
 - limiting amount of shown items (load time for 1000+ items is unfortunately a bit long)
 - simple UI elements with Semantic Ui React
@@ -30,6 +30,8 @@ I have built this solution with the assumption that a warehouse workers would us
 Error handling is admittedly left to minimal.
 
 Personally I am happy to have solved at least some of the slow loading times by hiding fetching and mapping within hooks, but would be happy to hear about optimization more to limit the loading times to minimum.
+
+
 
 
 Instructions

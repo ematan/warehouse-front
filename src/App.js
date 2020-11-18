@@ -42,8 +42,8 @@ const App = () => {
   }, [])
 
   const padding = {
-    'padding-top': '20px',
-    'padding-bottom': '5px'
+    'paddingTop': '20px',
+    'paddingBottom': '5px'
   }
 
   return (
