@@ -2,12 +2,13 @@
 
 ### Table of Contents
 - [Heroku link](https://github.com/ematan/warehouse-front#link-to-running-version-in-heroku)
-- [Implemented features](https://github.com/ematan/warehouse-front#implementation)
+- [Implemented features](https://github.com/ematan/warehouse-front#implemented-features)
+- [Implemented features](https://github.com/ematan/warehouse-front#personal-comments)
 - [Initial Instructions](https://github.com/ematan/warehouse-front#instructions)
 
 Link to running version in heroku
 --------------------------------
-coming soon
+https://thawing-plateau-33439.herokuapp.com/
 
 Implemented features
 --------------
@@ -17,7 +18,18 @@ Implemented features
 - handle empty response by refetching
 - save fetched data to store, refetch every 5 minutes
 
-- filtering by each field
+- filtering for each field
+- limiting amount of shown items (load time for 1000+ items is unfortunately a bit long)
+- simple UI elements with Semantic Ui React
+
+Personal comments
+-----------------
+
+I have built this solution with the assumption that a warehouse workers would use a hardware of the size of a tablet or a pc. The UI is not good for mobile width hardware, since the information table would not fit in one row. If this was intended for mobile usage, a different formating of table might be required.
+
+Error handling is admittedly left to minimal.
+
+Personally I am happy to have solved at least some of the slow loading times by hiding fetching and mapping within hooks, but would be happy to hear about optimization more to limit the loading times to minimum.
 
 
 Instructions

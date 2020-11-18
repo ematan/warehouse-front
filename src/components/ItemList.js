@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { MyTable } from './CustomTable'
 import PropTypes from 'prop-types'
-import { Input, Select, Divider, Header, Loader, Segment } from 'semantic-ui-react'
+import { Input, Select, Divider, Header, Loader, Segment, Container } from 'semantic-ui-react'
 import mapAvailability from '../helpers/tableHelper'
 
 const useField = (type) => {
@@ -84,7 +84,7 @@ const ItemList = ({ itemCategory }) => {
           Filters
         </Header>
       </Divider>
-      <div>
+      <Container>
         <Input style={padding} label='id' {...id} />
         <Input style={padding} label='name' {...name} />
         <Input style={padding} label='color' {...color} />
@@ -102,7 +102,7 @@ const ItemList = ({ itemCategory }) => {
         />
 
 
-      </div>
+      </Container>
       <h4>Showing first <Input placeholder={maxLen} {...showedAmount} /> results out of {items.length}</h4>
       <MyTable items={filtered.slice(0, maxLen)} manufacturers={manufacturers} />
     </div>

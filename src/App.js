@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { fetchItems } from './reducers/itemReducer'
 import { fetchAvailability } from './reducers/manufacturerReducer'
 import ItemList from './components/ItemList'
-import { Button, Divider, Header, Container } from 'semantic-ui-react'
+import { Button, Divider, Header, Container, Icon } from 'semantic-ui-react'
 
 const App = () => {
   const [loadItems, setLoadItems] = useState(true)
@@ -41,18 +41,25 @@ const App = () => {
     }, 5*60*1000)
   }, [])
 
+  const padding = {
+    'padding-top': '20px',
+    'padding-bottom': '5px'
+  }
+
   return (
     <div>
-      <h1>Warehouse</h1>
+      <Container textAlign='center'>
+        <Link to="/"><Header style={padding} as='h1'><Icon name='warehouse' />Warehouse</Header></Link>
+      </Container>
       <Divider horizontal>
         <Header as='h4'>
           Product categories
         </Header>
       </Divider>
       <Container textAlign='center'>
-        <Link to="/jackets"><Button size='huge'>jackets</Button></Link>
-        <Link to="/shirts"><Button  size='huge'>shirts</Button></Link>
-        <Link to="/accessories"><Button size='huge'>accessories</Button></Link>
+        <Link to="/jackets"><Button size='large'>jackets</Button></Link>
+        <Link to="/shirts"><Button  size='large'>shirts</Button></Link>
+        <Link to="/accessories"><Button size='large'>accessories</Button></Link>
       </Container>
 
 
