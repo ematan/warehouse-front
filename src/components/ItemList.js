@@ -4,18 +4,7 @@ import { MyTable } from './CustomTable'
 import PropTypes from 'prop-types'
 import { Input, Select, Divider, Header, Loader, Segment, Container } from 'semantic-ui-react'
 import mapAvailability from '../helpers/tableHelper'
-
-const useField = (type) => {
-  const [value, setValue] = useState('')
-  const onChange = (event) => {
-    setValue(event.target.value)
-  }
-  return {
-    type,
-    value,
-    onChange
-  }
-}
+import { useField } from '../helpers/customHooks'
 
 const ItemList = ({ itemCategory }) => {
   const items = useSelector(state => state.items[itemCategory])
@@ -54,23 +43,30 @@ const ItemList = ({ itemCategory }) => {
 
   const maxLen = showedAmount.value === '' ? 20 : Number(showedAmount.value)
 
-  const availabilityOptions = Array.from(new Set(mapped.filter(i => i.availability).map(i => i.availability))).map(o => {
-    return {
-      value: o.toLowerCase(),
-      text: o
-    }
-  })
+  const availabilityOptions = Array
+    .from(new Set(mapped.filter(i => i.availability).map(i => i.availability)))
+    .map(o => {
+      return {
+        value: o.toLowerCase(),
+        text: o
+      }
+    })
 
   const filtered = mapped.filter(i => {
-    let result = (
-      i.id.toLowerCase().includes(id.value) &&
-      i.name.toLowerCase().includes(name.value) &&
-      (i.color.includes(color.value) || color.value === '') &&
-      (!maker || i.manufacturer.toLowerCase() === maker) &&
-      (minPrice.value === '' || Number(i.price) >= Number(minPrice.value)) &&
-      (maxPrice.value === '' || Number(i.price) <= Number(maxPrice.value))
+    const idMatch = i.id.toLowerCase().includes(id.value)
+    const nameMatch = i.name.toLowerCase().includes(name.value)
+    const colorMatch = (i.color.includes(color.value) || color.value === '')
+    const manufacturerMatch = (!maker || i.manufacturer.toLowerCase() === maker)
+    const minPriceMatch = (minPrice.value === '' || Number(i.price) >= Number(minPrice.value))
+    const maxPriceMatch = (maxPrice.value === '' || Number(i.price) <= Number(maxPrice.value))
+
+    const result = (
+      idMatch && nameMatch && colorMatch &&
+      manufacturerMatch && minPriceMatch && maxPriceMatch
     )
-    if (result && availability && i.availability) result = i.availability.toLowerCase() === availability
+    if (result && availability && i.availability) {
+      return i.availability.toLowerCase() === availability
+    }
     return result
   })
   const padding = {
